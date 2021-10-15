@@ -1422,6 +1422,11 @@ export class BaseProvider extends Provider implements EnsProvider {
                 }
                 return undefined;
             }
+            
+            const klaytn_type = {"TxTypeLegacyTransaction":0,"TxTypeFeeDelegatedTransactions":1,"TxTypeFeeDelegatedWithRatioTransactions":2,"TxTypeValueTransfer":8,"TxTypeFeeDelegatedValueTransfer":9,"TxTypeFeeDelegatedValueTransferWithRatio":10,"TxTypeValueTransferMemo":16,"TxTypeFeeDelegatedValueTransferMemo":17,"TxTypeFeeDelegatedValueTransferMemoWithRatio":18,"TxTypeAccountCreation":24,"TxTypeAccountUpdate":32,"TxTypeFeeDelegatedAccountUpdate":33,"TxTypeFeeDelegatedAccountUpdateWithRatio":34,"TxTypeSmartContractDeploy":40,"TxTypeFeeDelegatedSmartContractDeploy":41,"TxTypeFeeDelegatedSmartContractDeployWithRatio":42,"TxTypeSmartContractExecution":48,"TxTypeFeeDelegatedSmartContractExecution":49,"TxTypeFeeDelegatedSmartContractExecutionWithRatio":50,"TxTypeCancel":56,"TxTypeFeeDelegatedCancel":57,"TxTypeFeeDelegatedCancelWithRatio":58,"TxTypeBatch":64,"TxTypeChainDataAnchoring":72,"TxTypeFeeDelegatedChainDataAnchoring":73,"TxTypeFeeDelegatedChainDataAnchoringWithRatio":74,"TxTypeLast":80};
+            if (result.type in klaytn_type) {
+                result.type = klaytn_type[result.type];
+            }
 
             const tx = this.formatter.transactionResponse(result);
 
